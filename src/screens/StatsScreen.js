@@ -39,7 +39,7 @@ export default function StatsScreen() {
             <View key={genre} style={styles.genreRow}>
               <Text style={styles.genreName}>{genre}</Text>
               <View style={styles.barBg}>
-                <View style={[styles.bar, { flex: count / movies.length }]} />
+                <View style={[styles.bar, { width: `${(count / movies.length) * 100}%` }]} />
               </View>
               <Text style={styles.genreCount}>{count}</Text>
             </View>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   cardLabel: { color: '#6c7086', fontSize: 12, marginTop: 4, fontWeight: '600' },
   genreRow: { flexDirection: 'row', alignItems: 'center', marginVertical: 6, gap: 10 },
   genreName: { color: '#cdd6f4', width: 90, fontSize: 14 },
-  barBg: { flex: 1, height: 10, backgroundColor: '#1e1e2e', borderRadius: 5, flexDirection: 'row' },
+  barBg: { flex: 1, height: 10, backgroundColor: '#1e1e2e', borderRadius: 5 },
   bar: { backgroundColor: '#cba6f7', borderRadius: 5 },
   genreCount: { color: '#6c7086', width: 24, textAlign: 'right' },
   empty: { color: '#6c7086', textAlign: 'center', marginTop: 60, fontSize: 16 },

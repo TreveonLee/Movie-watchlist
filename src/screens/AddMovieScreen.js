@@ -15,16 +15,17 @@ export default function AddMovieScreen() {
   const [notes, setNotes] = useState('');
 
   function handleAdd() {
-    if (!title.trim()) {
+    const trimmedTitle = title.trim();
+    if (!trimmedTitle) {
       Alert.alert('Title required', 'Please enter a movie title.');
       return;
     }
-    addMovie({ title: title.trim(), year: year.trim(), genre, notes: notes.trim() });
+    addMovie({ title: trimmedTitle, year: year.trim(), genre, notes: notes.trim() });
     setTitle('');
     setYear('');
     setGenre('');
     setNotes('');
-    Alert.alert('Added!', `"${title.trim()}" added to your watchlist.`);
+    Alert.alert('Added!', `"${trimmedTitle}" added to your watchlist.`);
   }
 
   return (
@@ -51,7 +52,7 @@ export default function AddMovieScreen() {
         />
 
         <Text style={styles.label}>Genre</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.genreScroll}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} nestedScrollEnabled style={styles.genreScroll}>
           {GENRES.map(g => (
             <TouchableOpacity
               key={g}
