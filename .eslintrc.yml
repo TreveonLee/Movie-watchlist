@@ -1,0 +1,56 @@
+# .eslintrc.yml — ESLint configuration for Movie Watchlist
+env:
+  browser: true
+  es2021: true
+
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+
+plugins:
+  - react
+
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+
+settings:
+  react:
+    version: detect
+
+rules:
+  # Enforce consistent indentation (2 spaces)
+  indent:
+    - warn
+    - 2
+
+  # Require semicolons — catches missing statement terminators
+  semi:
+    - warn
+    - always
+
+  # Disallow unused variables — catches typos and dead code
+  no-unused-vars:
+    - warn
+    - args: after-used
+
+  # Warn on console.log left in production code
+  no-console:
+    - warn
+    - allow:
+      - warn
+      - error
+
+  # React-specific: no need for React import in scope with new JSX transform
+  react/react-in-jsx-scope: off
+
+  # HOC (connect()) wrapped exports are fine — disabling dev-server-only rule
+  react-refresh/only-export-components: off
+
+  # exhaustive-deps is advisory for HOC-wrapped components
+  react-hooks/exhaustive-deps: warn
+
+  # Enforce prop types declaration
+  react/prop-types: warn
